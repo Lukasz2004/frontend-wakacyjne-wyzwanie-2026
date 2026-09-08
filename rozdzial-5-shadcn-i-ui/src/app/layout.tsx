@@ -4,6 +4,7 @@ import { PropsWithChildren } from "react";
 import "./globals.css";
 import Link from "next/link";
 import { NAV_LINKS } from "@/src/config";
+import Navbar from "@/src/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,16 +29,7 @@ export default function RootLayout({ children, modal }: PropsWithChildren & { mo
     >
       <body className="min-h-full flex flex-col">
       <div>
-        <nav className="inset-0 py-6 grid place-items-center">
-          <ul className="flex items-center gap-4">
-            {NAV_LINKS.map(link => (
-              // Obsługa zdarzenia 'hover'
-              <li key={link.id} className="transition-colors hover:text-blue-500">
-                <Link href={link.href}>{link.title}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <Navbar />
 
         <main className="py-16 max-w-4xl mx-auto">{children}</main>
         {modal}
