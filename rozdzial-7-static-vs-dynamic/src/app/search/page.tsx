@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ProductCard } from "@/components/product-card";
@@ -8,6 +9,12 @@ import { searchProducts } from "@/lib/products";
 interface SearchPageProps {
   searchParams: Promise<{ q?: string }>;
 }
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+  },
+};
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const { q = "" } = await searchParams;
