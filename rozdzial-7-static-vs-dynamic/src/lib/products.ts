@@ -1,13 +1,14 @@
+import { cache } from "react";
 import { PRODUCTS } from "@/data/products";
 
 export function getProducts() {
   return PRODUCTS;
 }
 
-export async function getProduct(id: string) {
+export const getProduct = cache(async (id: string) => {
   await Promise.resolve();
   return PRODUCTS.find((product) => product.id === Number(id));
-}
+});
 
 export function searchProducts(query: string) {
   const normalizedQuery = query.trim().toLowerCase();
